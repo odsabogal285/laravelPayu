@@ -1,0 +1,247 @@
+{
+  "strategy": "default",
+  "matchStrategy": "prefix",
+  "maxNumberOfSuggestions": 5,
+  "maxNumberOfWordsAsPhrase": 3,
+  "minNumberOfCharactersTriggered": 0,
+  "minNumberOfWordsTriggeredPhrase": 1,
+  "complementAutomatically": true,
+  "delayMilliSeconds": 0,
+  "disableSuggestionsDuringImeOn": false,
+  "insertAfterCompletion": true,
+  "firstCharactersDisableSuggestions": ":/^",
+  "showMatchStrategy": true,
+  "showComplementAutomatically": true,
+  "showIndexingStatus": true,
+  "descriptionOnSuggestion": "Short",
+  "selectSuggestionKeys": "Enter",
+  "additionalCycleThroughSuggestionsKeys": "None",
+  "disableUpDownKeysForCycleThroughSuggestionsKeys": false,
+  "openSourceFileKey": "None",
+  "propagateEsc": false,
+  "enableCurrentFileComplement": true,
+  "currentFileMinNumberOfCharacters": 0,
+  "onlyComplementEnglishOnCurrentFileComplement": false,
+  "enableCurrentVaultComplement": false,
+  "currentVaultMinNumberOfCharacters": 0,
+  "includeCurrentVaultPathPrefixPatterns": "",
+  "excludeCurrentVaultPathPrefixPatterns": "",
+  "includeCurrentVaultOnlyFilesUnderCurrentDirectory": false,
+  "enableCustomDictionaryComplement": false,
+  "customDictionaryPaths": "https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-no-swears.txt",
+  "columnDelimiter": "Tab",
+  "customDictionaryWordRegexPattern": "",
+  "delimiterToHideSuggestion": "",
+  "delimiterToDivideSuggestionsForDisplayFromInsertion": "",
+  "caretLocationSymbolAfterComplement": "",
+  "displayedTextSuffix": " => ...",
+  "enableInternalLinkComplement": true,
+  "suggestInternalLinkWithAlias": false,
+  "excludeInternalLinkPathPrefixPatterns": "",
+  "enableFrontMatterComplement": true,
+  "frontMatterComplementMatchStrategy": "inherit",
+  "insertCommaAfterFrontMatterCompletion": false,
+  "showLogAboutPerformanceInConsole": false,
+  "selectionHistoryTree": {
+    "Perso": {
+      "Perso": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655303050130
+        }
+      }
+    },
+    "PersonProtocol": {
+      "PersonProtocol": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655303065583
+        }
+      }
+    },
+    "Interpolación": {
+      "Interpolación": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655303118919
+        }
+      }
+    },
+    "lenguage": {
+      "lenguage": {
+        "currentFile": {
+          "count": 3,
+          "lastUpdated": 1655303431472
+        }
+      }
+    },
+    "String": {
+      "String": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655303132447
+        }
+      }
+    },
+    "fullName": {
+      "fullName": {
+        "currentFile": {
+          "count": 3,
+          "lastUpdated": 1655303496797
+        }
+      }
+    },
+    "subject": {
+      "subject": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655303463378
+        }
+      }
+    },
+    "Protocol": {
+      "Protocol": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655303408557
+        }
+      }
+    },
+    "Programer": {
+      "Programer": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655303410490
+        }
+      }
+    },
+    "Teacher": {
+      "Teacher": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655303449778
+        }
+      }
+    },
+    "myProgramer": {
+      "myProgramer": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655303482470
+        }
+      }
+    },
+    "MyTeacher": {
+      "MyTeacher": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655303494156
+        }
+      }
+    },
+    "instalación": {
+      "instalación": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655307970463
+        }
+      }
+    },
+    "laravel": {
+      "laravel": {
+        "currentFile": {
+          "count": 5,
+          "lastUpdated": 1655330150939
+        }
+      }
+    },
+    "directorio": {
+      "directorio": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655308379835
+        }
+      }
+    },
+    "Install": {
+      "Install": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655308433962
+        }
+      }
+    },
+    "Instalación": {
+      "Instalación": {
+        "currentFile": {
+          "count": 3,
+          "lastUpdated": 1655308585486
+        }
+      }
+    },
+    "Laravel": {
+      "Laravel": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655308588017
+        }
+      }
+    },
+    "migración": {
+      "migración": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655315295812
+        }
+      }
+    },
+    "default": {
+      "default": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655315451683
+        }
+      }
+    },
+    "HasFactory": {
+      "HasFactory": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655328585888
+        }
+      }
+    },
+    "protected": {
+      "protected": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655329597921
+        }
+      }
+    },
+    "php-cli": {
+      "php-cli": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655330170636
+        }
+      }
+    },
+    "PHP_EOL": {
+      "PHP_EOL": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655330173517
+        }
+      }
+    },
+    "plantillas": {
+      "plantillas": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655330897281
+        }
+      }
+    }
+  }
+}

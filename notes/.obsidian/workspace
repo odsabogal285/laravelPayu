@@ -1,0 +1,156 @@
+{
+  "main": {
+    "id": "5c91e183bddf7fde",
+    "type": "split",
+    "children": [
+      {
+        "id": "f1537a5f2d7cbcdb",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "index-laravel.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "eb127addaf8ff60a",
+    "type": "split",
+    "children": [
+      {
+        "id": "90193a398729b261",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6479e4b454d04795",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "35be9b9faf8c637f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#task",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4bb5cbe6d97f4fe8",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "31a45efe71488db2",
+    "type": "split",
+    "children": [
+      {
+        "id": "06a565515e6e3175",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8fd99846893da305",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "index-laravel.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6d6536e4fe9a4b5a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "index-laravel.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b7e8ff216c41a04f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1b67bfe1958826f3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "index-laravel.md"
+              }
+            }
+          },
+          {
+            "id": "068cbe4cd6c68e2a",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "23092050bbb4fd24",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "f1537a5f2d7cbcdb",
+  "lastOpenFiles": [
+    "index-laravel.md",
+    "annexed/notes.jpeg",
+    "Tasks.md",
+    "template/1. tittle.md",
+    "template/2. back-index-info.md"
+  ]
+}
