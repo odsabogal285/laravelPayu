@@ -222,8 +222,8 @@
     "php-cli": {
       "php-cli": {
         "currentFile": {
-          "count": 1,
-          "lastUpdated": 1655330170636
+          "count": 2,
+          "lastUpdated": 1655408822520
         }
       }
     },
@@ -240,6 +240,38 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1655330897281
+        }
+      }
+    },
+    "create": {
+      "create": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655391145431
+        }
+      }
+    },
+    "variable": {
+      "variable": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655392367778
+        }
+      }
+    },
+    "providers": {
+      "providers": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655407657242
+        }
+      }
+    },
+    "welcome": {
+      "welcome": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655410444382
         }
       }
     }

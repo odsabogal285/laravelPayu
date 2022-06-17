@@ -172,8 +172,171 @@ Este hace referencia al @yield que se creo en la platilla y es usado para introd
 ---
 
 ## Controlador
+### Create
+Desde un controlador se pueden validar los datos enviados, adicionalmente del Frontend
+```PHP
+public function store(Request $request)
+{
+	$request->validate([
+		'name' => 'required|max:15',
+		'due' => 'required|gte:50'
+	]); // Validar con la documentacion
+
+	$client = Client::create($request->only('name', 'due', 'comments')); // Only solo para que se envien los datos que se necesitan
+	Session::flash('mensaje','Registro creado con exito');
+	return redirect()->route('client.index');
+
+}
+```
+
+Para realizar el Insert en la base de datos en este caso se utiliza el create y se envia desde la función only para que solo tenga en cuenta esos datos. 
+
+### Update
+Desde la vista se vería así, la cual valida que exista la varible client, en caso positivo realiza el form como post pero el metodo put es modificado.
+~~~ HTML
+@if (isset($client))
+	<form action="{{ route('client.update', $client ) }}" method="POST">
+	@method('PUT') {{-- HTML solo permite los metodos de post & get. laravel a traves de este modificador permite cambiar esto y enviar un metodo put--}}
+@else
+	<form action="{{ route('client.store') }}" method="POST">
+@endif
+~~~
+
+Ahora si se desea actualizar un dato de forma individual en vez de masiva
+```PHP
+public function update(Request $request, Client $client)
+{
+	$request->validate([
+		'name' => 'required|max:15',
+		'due' => 'required|gte:50'
+	]); // Validar con la documentacion
+
+	$client->name = $request['name'];
+	$client->due = $request['due'];
+	$client->comments = $request['comments'];
+	$client->save(); // Almacena en la base de datos
+	
+	Session::flash('mensaje','Registro creado con exito');
+	return redirect()->route('client.index');
+
+}
+```
+
+### Destroy
+``` ad-tip
+title: Destroy
+Cuando se envia una función de destroy desde un boton se deben enviar a traves de un formulario.
+```
+~~~HTML
+<form action="{{ route('client.destroy', $client) }}" method="post" class="d-inline"> {{--Se pone inline para que lo deje sobre la misma linea, ya que form es en bloque--}}
+	@method('DELETE')
+	@csrf
+	<button type="submit" class="btn btn-danger" onclick="return confirm('¿Estas seguro de eliminar este cliente?')">Eliminar</button>
+</form>
+~~~
 
 ```PHP
-//
+public function destroy(Client $client)
+{
+	$client->delete();
+	
+	Session::flash('mensaje', 'Registro eliminado con éxito');
+	return redirect()->route('client.index');
+
+}
 ```
+---
+## Routes
+Te permiten entrar en laravel y llamar a un recurso de tu interes.
+Para listar las rutas que están disponibles en el aplicativo, en la ruta que se encuentre almacenado.
+```PHP
+php artisan route:list
+```
+
+Las rutas para ejecutar las páginas es el archivo router/web.php 
+Estas rutas utilizan verbos http
+[Métodos de petición http](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+En este caso se evidencia el uso de la fachada Route con un verbo http de GET, el cual al ingresar a esta ruta retornará la vista de resources/views/welcome.blade.php
+
+~~~ PHP
+Route::get('/', function () {  
+    return view('welcome');  
+});
+~~~
+
+Variables en rutas:
+
+~~~PHP
+Route::get('/hola/{name}', function (string $name) {  
+    return "Hola {$name}";  
+});
+~~~
+
+
+
+---
+## Variable de sesión
+Son utilizadas para enviar mensajes en este caso hacia una vista 
+```PHP
+use Illuminate\Support\Facades\Session;
+Session::flash('mensaje','Registro creado con exito');
+```
+
+La vista (index.blade.php) se vería así:
+
+```html
+@extends('theme.base')
+@section('content')
+	<div class="container py-5 text-center">
+	
+		<h1> Listado de clientes </h1>
+		<a href="{{ route('client.create') }}" class="btn btn-primary">Crear clientes</a>
+
+		@if (Session::has('mensaje'))
+			<div class="alert alert-info my-5">
+				{{Session::get('mensaje')}}
+			</div>
+		@endif
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Saldo</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td scope="row">FelinoHost</td>
+					<td> 0.0 </td>
+					<td>Editar - Eliminar</td>
+				</tr>
+				<tr>
+					<td scope="row"> </td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+@endsection
+```
+
+``` ad-info
+title: @Session  
+Evalua que exista una variable de session llamada mensaje, al encontrarla imprime en un div, el valor que contenga dicha variable.
+```
+---
+## Bootstrappers
+Estos actuan directamente en el kernel del enrrutamiento o kernel de requires:
+Modo de funcionamiento:
+1. Carga las variables de entorno
+2. Carga la confuguración
+3. Gestiona las excepciones
+4. Registra "fachadas": Las fachadas utilizan métodos callStatic, simula la llamada a métodos estáticos sin que realmente estos sean estáticos. (Route, Response, Session, Require); Evita estar creando instancias a cada rato.
+5. Registra los providers: 
+6. Bootea los providers 
+
+Para que laravel funcione, tiene que ejecutar lo anterior y en ese orden.
+
 ---

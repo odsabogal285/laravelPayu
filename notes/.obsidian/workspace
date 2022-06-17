@@ -148,9 +148,14 @@
   "active": "f1537a5f2d7cbcdb",
   "lastOpenFiles": [
     "index-laravel.md",
-    "annexed/notes.jpeg",
-    "Tasks.md",
+    "template/99. Example notes.md",
+    "template/3. note.md",
+    "template/4. tip.md",
+    "template/5. codigo-php.md",
+    "template/6. codigo-html.md",
     "template/1. tittle.md",
-    "template/2. back-index-info.md"
+    "template/2. back-index-info.md",
+    "annexed/notes.jpeg",
+    "Tasks.md"
   ]
 }
