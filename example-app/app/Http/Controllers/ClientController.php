@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -14,7 +15,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client.index');
+        $clients = Client::paginate(5);
+        return view('client.index')
+            -> with('clients', $clients);
     }
 
     /**
@@ -37,11 +40,11 @@ class ClientController extends Controller
     {
         $request->validate([
             'name' => 'required|max:15',
-            'due' => 'required|gte:50'
+            'due' => 'required|gte:1'
         ]); // Validar con la documentacion
 
         $client = Client::create($request->only('name', 'due', 'comments')); // Only solo para que se envien los datos que se necesitan 
-        
+        Session::flash('mensaje', 'Registro creado con éxito');
         return redirect()->route('client.index');
     }
 
@@ -64,7 +67,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('client.form')
+                -> with('client', $client);
     }
 
     /**
@@ -76,7 +80,19 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:15',
+            'due' => 'required|gte:1'
+        ]); // Validar con la documentacion
+        // Forma individual
+        //$client = Client::create($request->only('name', 'due', 'comments')); // Only solo para que se envien los datos que se necesitan 
+        $client->name = $request['name'];
+        $client->due = $request['due'];
+        $client->comments = $request['comments'];
+        $client->save(); // Almacena en la base de datos
+        
+        Session::flash('mensaje', 'Registro editado con éxito');
+        return redirect()->route('client.index');
     }
 
     /**
@@ -87,6 +103,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        Session::flash('mensaje', 'Registro eliminado con éxito');
+        return redirect()->route('client.index');
     }
 }
