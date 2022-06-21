@@ -394,7 +394,7 @@ public function index(string $name): string{
 title: compact
 Esta es una forma de pasarle variables desde un controlador a una vista 
 ~~~
-### Create
+### Create - store
 Desde un controlador se pueden validar los datos enviados, adicionalmente del Frontend
 ```PHP
 public function store(Request $request)
@@ -562,3 +562,6 @@ Modo de funcionamiento:
 Para que laravel funcione, tiene que ejecutar lo anterior y en ese orden.
 
 ---
+
+- [ ] #task Diferencia entre response/request
+- [ ] 

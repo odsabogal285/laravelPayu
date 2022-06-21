@@ -13,7 +13,6 @@ class Client extends Model
      *
      * @var bool
      */
-    public $incrementing = false;
     protected $fillable = ['name', 'due', 'comments']; // Protejidas [No carga de forma masiva]
 
 }

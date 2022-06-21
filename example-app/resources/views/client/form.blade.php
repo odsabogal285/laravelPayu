@@ -1,21 +1,19 @@
 @extends('theme.base')
 
 @section('content')
-    <div class="container py-5 text-center"> 
+    <div class="container py-5 text-center">
         @if (isset($client))
-             <h1> Editar cliente </h1>  
+             <h1> Editar cliente </h1>
         @else
             <h1> Crear cliente </h1>
-        @endif 
-
-       
+        @endif
 
         @if (isset($client))
-            <form action="{{ route('client.update', $client ) }}" method="POST"> 
+            <form action="{{ route('client.update', $client ) }}" method="POST">
                 @method('PUT') {{-- HTML solo permite los metodos de post & get. laravel a traves de este modificador permite cambiar esto y enviar un metodo put--}}
          @else
             <form action="{{ route('client.store') }}" method="POST">
-       @endif 
+       @endif
             @csrf {{--Directiva para autorizar el procesamiento en laravel--}}
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
@@ -47,7 +45,7 @@
             @else
                 <button type="submit" class="btn btn-info">Guardar cliente</button>
             @endif
-            
+
         </form>
     </div>
 @endsection

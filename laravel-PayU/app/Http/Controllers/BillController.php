@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBillRequest;
 use App\Http\Requests\UpdateBillRequest;
 use App\Models\Bill;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class BillController extends Controller
 {
@@ -13,9 +15,9 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('/bill/index')->with('bill', $request);
     }
 
     /**
