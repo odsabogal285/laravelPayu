@@ -13,11 +13,10 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $clients = Client::paginate(5);
         return view('client.index')
-            -> with('clients', $clients);
+            ->with('clients', $clients);
     }
 
     /**
@@ -68,7 +67,7 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         return view('client.form')
-                -> with('client', $client);
+            ->with('client', $client);
     }
 
     /**
@@ -90,7 +89,7 @@ class ClientController extends Controller
         $client->due = $request['due'];
         $client->comments = $request['comments'];
         $client->save(); // Almacena en la base de datos
-        
+
         Session::flash('mensaje', 'Registro editado con éxito');
         return redirect()->route('client.index');
     }

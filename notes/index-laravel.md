@@ -44,6 +44,10 @@ Estando en el directorio
 ```terminal
 php artisan serve
 ```
+Versión laravel 
+~~~PHP
+php artisan --version
+~~~
 
 ## Links:
 
@@ -95,16 +99,87 @@ Se puede colocar caracteriticas propias de SQL con el uso de ->
 ``` ad-info
 Este comando realizará todas las migraciones posibles.
 ```
+Tipos de datos que manejan las migraciones:
+[Tipos de columnas disponibles](https://laravel.com/docs/9.x/migrations#available-column-types)
 
+El nombre correcto para crear una migración debe ser:
+~~~ ad-tip
+title: create migration 
+create_names_table 
+~~~
+### Agregar columnas a tablas
+El nombre correcto para agregar una columna a una tabla a través de una migración es:
+~~~ ad-tip
+title: add column 
+php artisan make:migration add_name_columna_to_names_table
+(names) = Nombre de la tabla a donde se desea agregar
+~~~
+Quedando de la siguiente forma, en Schema::table hace referencia a un cambio en la tabla.
+~~~PHP
+Schema::table('payments', function (Blueprint $table) {
+    $table->unsignedBigInteger('user_id')->after('id');
+
+    $table->foreign('user_id')->references('id')->on('users');
+});
+~~~
+
+Ahora si queremos eliminar esta migración se debe poner así: 
+~~~PHP
+Schema::table('payments', function (Blueprint $table) {  
+    $table->dropForeign('billings_user_id_foreign'); // Eliminamos lallave  
+    $table->dropColumn('user_id');  // Eliminamos la columna
+});
+~~~
+
+[Video de explicación](https://www.youtube.com/watch?v=igyDtDBecns&list=PLd3a4dr8oUsDAjQa8T0eKSyOxUCoiMVxO&index=20)
+[Documentación](https://laravel.com/docs/9.x/migrations#foreign-key-constraints)
+### Modificar columnas ya creadas
+En primer lugar se debe instalar en el proyecto:
+~~~PHP
+composer require doctrine/dbal
+~~~
+
+~~~ ad-tip
+title: updated column
+php artisan make:migration update_name_to_users_table
+~~~
+De esta forma se cambiaria la columna name a una cantidad maxima de 70 caracteres.
+~~~PHP
+Schema::table('users', function (Blueprint $table) {  
+    $table->string('name', 70)->change();  
+});
+~~~
+Y en su función de rollback se pondria la cantidad que se tenia en un inicio, para poder volver en caso de que se requiera:
+~~~PHP
+Schema::table('users', function (Blueprint $table) {  
+    $table->string('name', 60)->change();  
+});
+~~~
+
+[Documentación](https://laravel.com/docs/9.x/migrations#updating-column-attributes)
 
 ---
-## Protected - Model
-El portected le indica a laravel que esas variables no recibirán cargas de forma masiva. #InvDocumentación
+## Model
+Aunque el nombre del modelo sea en mayúscula y singular, laravel va a trabajar con el nombre de la tabla en minúscula y plural.
+~~~ ad-tip
+title: name model 
+User = users 
+Post = posts
+Client = clients
+
+El nombre de los modelos nunca deben ser verbos
+~~~
+Si se desea trabajar con otra tabla y de plano ignorar el estándar de laravel se definiría así:
+~~~PHP
+protected  $table = "Nombre de la tabla";
+~~~
+[Documentación modelos](https://laravel.com/docs/9.x/eloquent#generating-model-classes)
+El protected le indica a laravel que esas variables no recibirán cargas de forma masiva. #InvDocumentación
 - [ ] #task ¿Para que funciona HasFactory? 🔼 
 - [ ] #task ¿Para que funciona protected laravel? 
 
+HasFactory nos permite crear datos para insertar en la base de datos de una forma mas rápida. 
 
-¿Para que sirve HasFactory ? #InvDocumentación - [ ]
 ```PHP
 class Client extends Model
 {
@@ -112,6 +187,117 @@ class Client extends Model
 	protected $fillable = ['name', 'due', 'comments']; // Protejidas [No carga de forma masiva]
 }
 ```
+
+Atributos que son ocultos para los Arrays, no se desea retornarlos:
+~~~PHP
+/**  
+ * The attributes that should be hidden for serialization. 
+ * 
+ * 
+ * @var array<int, string>  
+ */
+ protected $hidden = [  
+    'password',  
+    'remember_token',  
+];
+~~~
+
+casteos: El tipo de datos que los atributos deben tener
+ptda: No entiendo muy bien la función.
+~~~PHP
+protected $casts = [  
+    'email_verified_at' => 'datetime',  
+];
+~~~
+
+¿Para que sirve HasFactory ? #InvDocumentación - [ ]
+### Factories
+Para crear las factories es:
+~~~PHP
+php artisan make:factory NameFactory
+~~~
+
+Las factories son utilizadas para definir la labor que realizará el seeds, definiendo de forma precisa cuales son los campos que se deben de cargan en la tabla.
+
+~~~PHP
+public function definition()  
+{  
+    return [  
+        'name' => $this->faker->name(),  
+        'document' => $this->faker->unique()->buildingNumber(),  
+        'surname' => $this->faker->lastName(),  
+        'email' => $this->faker->unique()->safeEmail(),  
+        'email_verified_at' => now(),  
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password  
+        'remember_token' => Str::random(10),  
+        'billing_id' => Billing::factory()  
+    ];  
+}
+~~~
+
+~~~ ad-note
+title: Billing::factory()
+Esa linea de código le indica a los factories que debe crear un registro de tipo Billing por cada usuario que se cree.
+~~~
+[Documentación factories](https://laravel.com/docs/9.x/database-testing#defining-model-factories)
+### Seeds
+Se utiliza para realizar un registro de datos falsos en la base de datos en su momento de desarrollo para realizar pruebas o en un entorno de producción para insertar información relevante de países, códigos postales, etc.
+
+~~~PHP
+// Ruta: seeders DatabaseSeeders
+public function run()  
+{  
+     // User::factory(10)->create();  
+     $this->call([
+	     PostSeeder::class,
+     ])
+}
+~~~
+
+~~~ ad-note
+title: Seeds Run
+Es aqui donde se hace uso de los factories en ejecución con el Seeders, se crearan 10 registros del modelo/tabla usuarios.
+
+De igual forma al ejecutar el call se llama a todos los seeders que se requieran.
+~~~
+Para ejecutar la seeders es con el comando 
+~~~PHP
+php artisan db:seed
+~~~
+Si se desea refrescar las migraciones y al unisono cargar los seeders, se utilizara el siguiente comando:
+
+~~~PHP
+php artisan migrate:fresh --seed
+~~~
+
+[Documentación Seeders](https://laravel.com/docs/9.x/seeding#main-content)
+[Video seeds  y factories](https://www.youtube.com/watch?v=mBzISfcAul4&list=PLd3a4dr8oUsDAjQa8T0eKSyOxUCoiMVxO&index=22) 
+
+### Relaciones
+Los nombres de las relacioness que se generan en los modelos, por estándar debe sere dependiendo de su relación:
+
+~~~PHP
+// Si un usuario puede tener varios posts, entonces:
+public function posts () // Nombre en base a relación  
+{  
+    return $this->hasMany(Post::class); // 
+}
+// Si un usuario puede tener varios pagos, entonces:
+public function bills () // Nombre en base a relación  
+{  
+    return $this->hasMany(Billing::class);  
+}
+// Si un pago/post solo lo puede tener un usuario, entonces:
+public function user()  
+{  
+    return $this->hasOne(User::class);  
+    // hasOne - belongsTo  
+}
+~~~
+
+[Video relaciones](https://www.youtube.com/watch?v=lhHf9RvISXM&list=PLd3a4dr8oUsDAjQa8T0eKSyOxUCoiMVxO&index=23)
+[Documentación relaciones](https://laravel.com/docs/9.x/eloquent-relationships#main-content)
+
 ---
 ## Vistas
 Las vistas en Laravel se manejan a través de de la extensión .blade
@@ -172,6 +358,29 @@ Este hace referencia al @yield que se creo en la platilla y es usado para introd
 ---
 
 ## Controlador
+## index 
+La función index es utilizada cuando se accede por primera vez a una ruta que contenga este controlador.
+~~~PHP
+public function index(){  
+    $clients = Client::paginate(5);  
+    return view('client.index')  
+        ->with('clients', $clients);  
+}
+~~~
+
+~~~ ad-note
+title: with
+Esta es una forma de pasarle variables desde un controlador a una vista, no es necesario el $ para hacer el llamado a la variable.
+~~~
+~~~PHP
+public function index(string $name): string{  
+    return view('client.index', compact('name'))
+}
+~~~
+~~~ ad-note
+title: compact
+Esta es una forma de pasarle variables desde un controlador a una vista 
+~~~
 ### Create
 Desde un controlador se pueden validar los datos enviados, adicionalmente del Frontend
 ```PHP

@@ -11,4 +11,4 @@ Route::get('/', function () {
 
 Route::resource('client', ClientController::class); // Se crea de forma automatica varias rutas para aceder a los diferentes metodos de la clase
 
-Route::get('/hola/{name}', HolaController::class);
+Route::get('/hola/{name}', [HolaController::class, 'index' ]);

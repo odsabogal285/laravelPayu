@@ -150,8 +150,8 @@
     "laravel": {
       "laravel": {
         "currentFile": {
-          "count": 5,
-          "lastUpdated": 1655330150939
+          "count": 6,
+          "lastUpdated": 1655776889988
         }
       }
     },
@@ -206,16 +206,16 @@
     "HasFactory": {
       "HasFactory": {
         "currentFile": {
-          "count": 1,
-          "lastUpdated": 1655328585888
+          "count": 2,
+          "lastUpdated": 1655752113461
         }
       }
     },
     "protected": {
       "protected": {
         "currentFile": {
-          "count": 1,
-          "lastUpdated": 1655329597921
+          "count": 2,
+          "lastUpdated": 1655754412713
         }
       }
     },
@@ -272,6 +272,126 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1655410444382
+        }
+      }
+    },
+    "index": {
+      "index": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655480512458
+        }
+      }
+    },
+    "controlador": {
+      "controlador": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655481038559
+        }
+      }
+    },
+    "vista": {
+      "vista": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655481045309
+        }
+      }
+    },
+    "compact": {
+      "compact": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655481075762
+        }
+      }
+    },
+    "name}": {
+      "name}": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655481089249
+        }
+      }
+    },
+    "columna": {
+      "columna": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655740318777
+        }
+      }
+    },
+    "agregar": {
+      "agregar": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655740369715
+        }
+      }
+    },
+    "migration": {
+      "migration": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655748695293
+        }
+      }
+    },
+    "Documentación": {
+      "Documentación": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655759364441
+        }
+      }
+    },
+    "model": {
+      "model": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655754228604
+        }
+      }
+    },
+    "users": {
+      "users": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655754238021
+        }
+      }
+    },
+    "Seeders": {
+      "Seeders": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655758422291
+        }
+      }
+    },
+    "seeders": {
+      "seeders": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655760001090
+        }
+      }
+    },
+    "comando": {
+      "comando": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655759185245
+        }
+      }
+    },
+    "artisan": {
+      "artisan": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655760451031
         }
       }
     }

@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'due', 'comments']; // Protejidas [No carga de forma masiva] 
-    
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+    protected $fillable = ['name', 'due', 'comments']; // Protejidas [No carga de forma masiva]
+
 }
