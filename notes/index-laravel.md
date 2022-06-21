@@ -209,6 +209,19 @@ protected $casts = [
     'email_verified_at' => 'datetime',  
 ];
 ~~~
+### Llave foránea
+~~~PHP
+Schema::create('billings', function (Blueprint $table) {  
+    $table->id();  
+    $table->unsignedBigInteger('user_id');  
+    $table->double('value')->default(0);  
+    $table->text('details');  
+    $table->timestamps();  
+  
+    $table->foreign('user_id')->references('id')->on('users');  
+   // $table->foreignId('user_id')->constrained()->onDelete('cascade');  
+});
+~~~
 
 ¿Para que sirve HasFactory ? #InvDocumentación - [ ]
 ### Factories
