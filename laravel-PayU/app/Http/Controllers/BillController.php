@@ -85,4 +85,43 @@ class BillController extends Controller
     {
         //
     }
+    public function respuesta(){
+        return view('/bill/respuesta');
+    }
+    public function confirmacion(){
+        $bill = Bill::create([
+            'user_id' => 1,
+            'value' => 12.2,
+            'details' => 'PruebaLaravelPay'
+        ]);
+        /*
+         * //2c8907d6c66527fdddde71b52c359c3f
+        $sign = $_REQUEST['signature'];
+        $firma = '2c8907d6c66527fdddde71b52c359c3f';
+        if( strcmp($sign, $firma) == 0 ){
+            $bill = Bill::create([
+                'user_id' => 1,
+                'value' => 12.2,
+                'details' => 'PruebaLaravelPay'
+            ]);
+        }
+
+        $state_pol= $request['response_code_pol'];
+        if($state_pol == 4) {
+            $bill = Bill::create([
+                'user_id' => 1,
+                'value' => 12.2,
+                'details' => 'PruebaLaravelPay'
+            ]);
+        }
+        */
+    }
+    public function confir(Request $request)
+    {
+        $bill = Bill::create([
+            'user_id' => 1,
+            'value' => 12.2,
+            'details' => 'PruebaLaravelPay'
+        ]);
+    }
 }

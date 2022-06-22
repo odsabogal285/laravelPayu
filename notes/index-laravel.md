@@ -564,4 +564,4 @@ Para que laravel funcione, tiene que ejecutar lo anterior y en ese orden.
 ---
 
 - [ ] #task Diferencia entre response/request
-- [ ] 
+## Sistema de autenticación de laravel

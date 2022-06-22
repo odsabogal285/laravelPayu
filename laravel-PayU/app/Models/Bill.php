@@ -9,6 +9,6 @@ class Bill extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'user_id','value', 'details'
+        'user_id', 'value', 'details'
     ];
 }
