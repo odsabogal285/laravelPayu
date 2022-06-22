@@ -88,6 +88,8 @@ class BillController extends Controller
     public function respuesta(){
         return view('/bill/respuesta');
     }
+    public function confirmacion(Request $request){
+        echo $request;
     public function confirmacion(){
         $bill = Bill::create([
             'user_id' => 1,

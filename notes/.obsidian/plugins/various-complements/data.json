@@ -174,6 +174,8 @@
     "Instalación": {
       "Instalación": {
         "currentFile": {
+          "count": 4,
+          "lastUpdated": 1655994718049
           "count": 3,
           "lastUpdated": 1655308585486
         }
@@ -392,6 +394,94 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1655760451031
+        }
+      }
+    },
+    "nginx": {
+      "nginx": {
+        "currentFile": {
+          "count": 3,
+          "lastUpdated": 1655995369980
+        }
+      }
+    },
+    "actualizar": {
+      "actualizar": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655993498691
+        }
+      }
+    },
+    "configuración": {
+      "configuración": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655994611753
+        }
+      }
+    },
+    "Configuración": {
+      "Configuración": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655994629729
+        }
+      }
+    },
+    "ngnix": {
+      "ngnix": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655994636501
+        }
+      }
+    },
+    "proyecto": {
+      "proyecto": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655994720998
+        }
+      }
+    },
+    "github": {
+      "github": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655994884854
+        }
+      }
+    },
+    "install": {
+      "install": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1655995016274
+        }
+      }
+    },
+    "update": {
+      "update": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655994970543
+        }
+      }
+    },
+    "storage": {
+      "storage": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655995253330
+        }
+      }
+    },
+    "service": {
+      "service": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1655995373075
         }
       }
     }

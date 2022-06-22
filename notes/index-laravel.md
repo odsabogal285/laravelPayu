@@ -565,3 +565,183 @@ Para que laravel funcione, tiene que ejecutar lo anterior y en ese orden.
 
 - [ ] #task Diferencia entre response/request
 ## Sistema de autenticación de laravel
+
+## Despliegue
+### Actualizar
+~~~PHP
+sudo apt-get update 
+~~~
+~~~PHP
+sudo apt-get upgrade
+~~~
+### Abrir puertos
+En azure es importante abrir los puertos del servidor
+[Abrir puertos servidor](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-filter-network-traffic)
+### nginx
+~~~PHP
+sudo apt-get install nginx
+~~~
+~~~PHP
+systemctl status ngnix.service
+~~~
+En la ip pública ya se debe tener una respuesta predeterminada de nginx 
+### PHP
+~~~PHP
+sudo apt-get install php-fpm
+~~~
+### PHP en versión más actual 8.*
+~~~PHP
+sudo apt install ca-certificates apt-transport-https software-properties-common
+~~~
+~~~PHP
+sudo add-apt-repository ppa:ondrej/php
+~~~
+### Composer 
+~~~PHP
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+~~~
+~~~PHP
+php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+~~~
+~~~PHP
+php composer-setup.php
+~~~
+~~~PHP
+php -r "unlink('composer-setup.php');"
+~~~
+~~~PHP
+ll 
+~~~
+Con ll se evidenciara la instalación de composer de manera local, para pasarlo a global se realiza: 
+~~~PHP
+sudo mv composer.phar /usr/bin/composer
+~~~
+[Instalación composer](https://getcomposer.org/download/)
+
+### Configuración nginx 
+~~~PHP
+cd /etc/nginx/sites-available/
+~~~
+~~~PHP
+sudo nano default
+~~~
+Correcta configuración del archivo
+~~~PHP
+server {    
+	listen 80;    
+	listen [::]:80;    
+	server_name example.com;    
+	root /var/www/example/public;     
+	
+	add_header X-Frame-Options "SAMEORIGIN";    
+	add_header X-Content-Type-Options "nosniff";     
+	
+	index index.php;     
+	
+	charset utf-8;     
+	
+	location / {        
+		try_files $uri $uri/ /index.php?$query_string;    
+	}     
+	
+	location = /favicon.ico { access_log off; log_not_found off; }    
+	location = /robots.txt  { access_log off; log_not_found off; }     
+	
+	error_page 404 /index.php;     
+	
+	location ~ \.php$ {        
+		fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;        
+		fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;        
+		include fastcgi_params;    
+	}     
+	
+	location ~ /\.(?!well-known).* {        
+		deny all;    
+	}
+}
+~~~
+Reinicio del servicio
+~~~PHP
+sudo sytemctl reload nginx.service 
+~~~
+
+[Configuración  default ngnix](https://laravel.com/docs/master/deployment)
+
+### Instalación del proyecto 
+#### Credenciales github 
+~~~console
+sudo ssh-keygen
+~~~
+~~~PHP
+// Se debe verificar bien la ruta que se genera, ir a ese directorio y ahi si ejecutar el comando
+cat directorio/id_rsa.pub
+~~~
+Esa llave es la que va en github 
+~~~PHP
+sudo git clone ssh
+~~~
+#### Composer install 
+~~~PHP
+sudo componser install 
+~~~
+~~~PHP
+sudo composer update 
+~~~
+~~~PHP
+sudo apt-get install npm
+~~~
+~~~PHP
+sudo npm install 
+~~~
+~~~PHP
+sudo apt-install php-mysql php-curl php-json php-sqlite3 php-mbstring zip php-zip php-xml php-xmlrpc
+~~~
+
+#### Permisos
+Estando parando en la carpeta principal se realizan los siguientes comando
+~~~PHP
+sudo chown -R odsabogal storage/ 
+~~~
+~~~PHP
+sudo chown -R odsabogal bootstrap/cache
+~~~
+~~~PHP
+sudo chmod -R 775 storage
+sudo chmod -R 775 bootstrap/cache
+~~~
+~~~PHP
+sudo chmod -R ugo+rw storage
+sudo chmod -R ugo+rw bootstrap/cache
+~~~
+#### Instalación MySQL
+~~~PHP
+sudo apt install mysql-server
+~~~
+~~~PHP
+sudo mysql
+~~~
+~~~PHP
+sudo mysql_secure_installation
+~~~
+~~~PHP
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY '$aZ3xk$4TyJ#;
+~~~
+~~~PHP
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$aZ3xk$4TyJ#';
+
+~~~
+~~~PHP
+FLUSH PRIVILEGES;
+~~~
+~~~PHP
+mysql -u root -p
+~~~
+
+~~~PHP
+npm run dev
+~~~
+~~~PHP
+sudo gedit .env
+~~~
+
+
