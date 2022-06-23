@@ -6,7 +6,7 @@
             @csrf
             <div class="mb-3">
                 <label for="bill" class="form-label">Numero de tu Factura</label>
-                <input type="text" name="bill" class="form-control" placeholder="# de factura" value="{{old('bill')}}">
+                <input type="number" name="bill" class="form-control" placeholder="# de factura" value="{{old('bill')}}">
                 <label for="value" class="form-label">Valor total a pagar</label>
                 <input type="number" name="value" class="form-control" placeholder="Valor total a pagar sin puntos" step="0.01" value="{{old('value')}}">
                 <label for="name" class="form-label">Nombres</label>
