@@ -33,6 +33,7 @@
         $ApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
         $merchanId = '508029';
         $amount = $bill -> value ?? 0;
+	$referenceCode = 'PayUL0011';
         $currency = 'COP';
         $encrypMD5 = md5($ApiKey . '~' . $merchanId . '~' . $referenceCode . '~' . $amount . '~' . $currency);
         echo $encrypMD5;
@@ -51,8 +52,8 @@
             <input name="signature" type="hidden" value="{{$encrypMD5}}">
             <input name="test" type="hidden" value="1">
             <input name="buyerEmail" type="hidden" value="{{$bill->email}}">
-            <input name="responseUrl" type="hidden" value="http://52.152.128.96:8000/respuesta">
-            <input name="confirmationUrl" type="hidden" value="http://52.152.128.96:8000/confirmacion">
+            <input name="responseUrl" type="hidden" value="http:20.25.36.217:80/respuesta">
+            <input name="confirmationUrl" type="hidden" value="http://20.25.36.217:80/confirmacion">
             <input name="Submit" type="submit" value="Enviar">
         </form>
     </div>
