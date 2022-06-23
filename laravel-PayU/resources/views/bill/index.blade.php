@@ -33,7 +33,7 @@
         $ApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
         $merchanId = '508029';
         $amount = $bill -> value ?? 0;
-        $referenceCode = 'PayUL0011';
+        $referenceCode = $bill->bill ?? 'PayUL0012';
         $currency = 'COP';
         $encrypMD5 = md5($ApiKey . '~' . $merchanId . '~' . $referenceCode . '~' . $amount . '~' . $currency);
         echo $encrypMD5;

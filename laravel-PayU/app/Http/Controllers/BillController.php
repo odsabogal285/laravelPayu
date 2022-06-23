@@ -89,9 +89,18 @@ class BillController extends Controller
         return view('/bill/respuesta');
     }
     public function confirmacion(Request $request){
+<<<<<<< HEAD
+=======
+        $merchantId = $_REQUEST['merchantId'];
+        $orderId = $_REQUEST['orderId'];
+        $referenceCode = $_REQUEST['referenceCode'];
+        $description = $_REQUEST['description'];
+        $response_code_pol = $_REQUEST['response_code_pol'];
+
+>>>>>>> 36c248bbd98b0f8cc833d1c935a9bf89671fd841
         $bill = Bill::create([
             'user_id' => 1,
-            'value' => 12.2,
+            'value' => $merchantId,
             'details' => 'PruebaLaravelPay'
         ]);
         /*
