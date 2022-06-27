@@ -87,7 +87,7 @@ class BillController extends Controller
         //
     }
     public function respuesta(){
-        //return view('/bill/respuesta');
+        return view('/bill/respuesta');
     }
 
     public function confirmacion(Request $request){

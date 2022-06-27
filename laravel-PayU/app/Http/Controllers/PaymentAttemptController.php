@@ -47,7 +47,7 @@ class PaymentAttemptController extends Controller
             
             $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
             Log::info('reference '.$references);
-            return response()->json(null, 200);
+            //return response()->json(null, 200);
 
 
 
@@ -148,21 +148,21 @@ class PaymentAttemptController extends Controller
 
     public function confirmacion(Request $request){
         Log::info('Lo que llega '.$request);
-        $this->insertBill(1, 123, 'Aproveed', 1, 1234);
-        if(isset($request)){
-            $reference_sale = $request->reference_sale;
-            $reference_pol = $request->reference_pol;
-            $transaction_id = $request->transaction_id;
+       // $this->insertBill(1, 123, 'Aproveed', 1, 1234);
+        // if(isset($request)){
+        //     $reference_sale = $request->reference_sale;
+        //     $reference_pol = $request->reference_pol;
+        //     $transaction_id = $request->transaction_id;
             
-            $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
-            Log::info('reference '.$references);
-            if($references){
-                Log::info('Existe la referencia');
-            }else{
-                Log::info('No Existe la referencia');
-            }
+        //     $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
+        //     Log::info('reference '.$references);
+        //     if($references){
+        //         Log::info('Existe la referencia');
+        //     }else{
+        //         Log::info('No Existe la referencia');
+        //     }
            
-        }
+        // }
 
     }
 }

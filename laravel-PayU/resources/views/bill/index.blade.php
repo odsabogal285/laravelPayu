@@ -53,7 +53,7 @@
             <input name="test" type="hidden" value="1">
             <input name="buyerEmail" type="hidden" value="{{$bill->email}}">
             <input name="responseUrl" type="hidden" value="http://20.25.36.217:80/respuesta">
-            <input name="confirmationUrl" type="hidden" value="http://20.25.36.217:80/confirmacion">
+            <input name="confirmationUrl" type="hidden" value="https://webhook.site/d7a2a97d-0320-4a54-8517-cf9a221f99a0">
             <input name="Submit" type="submit" value="Enviar">
         </form>
     </div>

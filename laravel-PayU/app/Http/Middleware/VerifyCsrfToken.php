@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         'http://127.0.0.1:8000/*',
         'http://127.0.0.1:8000/confirmacion',
         'http://20.25.36.217/*',
+        'http://20.25.36.217/confirmacion',
         'https://webhook.site/*'
     ];
 }
