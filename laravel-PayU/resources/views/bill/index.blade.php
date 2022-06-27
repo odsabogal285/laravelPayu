@@ -52,7 +52,7 @@
             <input name="signature" type="hidden" value="{{$encrypMD5}}">
             <input name="test" type="hidden" value="1">
             <input name="buyerEmail" type="hidden" value="{{$bill->email}}">
-            <input name="responseUrl" type="hidden" value="http:20.25.36.217:80/respuesta">
+            <input name="responseUrl" type="hidden" value="http://20.25.36.217:80/respuesta">
             <input name="confirmationUrl" type="hidden" value="http://20.25.36.217:80/confirmacion">
             <input name="Submit" type="submit" value="Enviar">
         </form>

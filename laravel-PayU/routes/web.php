@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\PaymentAttemptController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,6 @@ Route::get('/', function () {
 
 Route::post('/billing', [BillController::class, 'index'])->name('billing');
 Route::get('/respuesta', [BillController::class, 'respuesta'])->name('respuesta');
-Route::post('/confirmacion', [BillController::class, 'confirmacion'])->name('confirmacion');
+//Route::post('/confirmacion', [BillController::class, 'confirmacion'])->name('confirmacion');
+Route::post('/confirmacion', [PaymentAttemptController::class, 'confirmacion'])->name('confirmacion');
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);

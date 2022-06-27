@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('bills', function (Blueprint $table) {
-            $table->string('paid', 10)->default('0')->after('details');
+        
+            $table->string('transaction_id', 50)->after('details');
+            $table->boolean('paid')->default(0)->after('details');
+            //$table->string('reference_pol', 50)->after('details');
+            //$table->string('reference_sale', 50)->after('details');
         });
     }
 
@@ -26,7 +30,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('bills', function (Blueprint $table) {
+           // $table->dropColumn('reference_sale');
+            $table->dropColumn('transaction_id');
             $table->dropColumn('paid');
+            //$table->dropColumn('reference_pol');
+
         });
     }
 };

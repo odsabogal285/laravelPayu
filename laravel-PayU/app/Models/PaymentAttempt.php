@@ -14,5 +14,7 @@ class PaymentAttempt extends Model
         'bill_id',
         'value',
         'details',
+        'reference_pol', 
+        'reference_sale'
     ];
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateBillRequest;
 use App\Models\Bill;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class BillController extends Controller
 {
@@ -86,51 +87,20 @@ class BillController extends Controller
         //
     }
     public function respuesta(){
-        return view('/bill/respuesta');
+        //return view('/bill/respuesta');
     }
+
     public function confirmacion(Request $request){
-<<<<<<< HEAD
-=======
-        $merchantId = $_REQUEST['merchantId'];
-        $orderId = $_REQUEST['orderId'];
-        $referenceCode = $_REQUEST['referenceCode'];
-        $description = $_REQUEST['description'];
-        $response_code_pol = $_REQUEST['response_code_pol'];
-
->>>>>>> 36c248bbd98b0f8cc833d1c935a9bf89671fd841
-        $bill = Bill::create([
-            'user_id' => 1,
-            'value' => $merchantId,
-            'details' => 'PruebaLaravelPay'
-        ]);
-        /*
-         * //2c8907d6c66527fdddde71b52c359c3f
-        $sign = $_REQUEST['signature'];
-        $firma = '2c8907d6c66527fdddde71b52c359c3f';
-        if( strcmp($sign, $firma) == 0 ){
-            $bill = Bill::create([
-                'user_id' => 1,
-                'value' => 12.2,
-                'details' => 'PruebaLaravelPay'
-            ]);
+        Log::info('Con flecha '.$request->payment_method_type);
+        if(isset($request)){
+            if($request->state_pol==4){
+                $this->statePol(1, 123, 'Aproveed', 'true');
+            }else if($request->state_pol==6){
+                $this->statePol(1, 123, 'Declined', 'false');
+            }
         }
 
-        $state_pol= $request['response_code_pol'];
-        if($state_pol == 4) {
-            $bill = Bill::create([
-                'user_id' => 1,
-                'value' => 12.2,
-                'details' => 'PruebaLaravelPay'
-            ]);
-        }
-        */
     }
-    public function confir(Request $request)
-    {
-        $bill = Bill::create([
-            'user_id' => 1,
-            'value' => 12.2,
-            'details' => 'PruebaLaravelPay'
-        ]);
-    }
+
+
 }

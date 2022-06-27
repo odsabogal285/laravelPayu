@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('bill_id');
             $table->decimal('value', 10, 2);
             $table->text('details');
+            $table->string('reference_pol', 50);
+            $table->string('reference_sale', 50);
             $table->timestamps();
 
             $table->foreign('bill_id')->references('id')->on('bills');
