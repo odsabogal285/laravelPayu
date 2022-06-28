@@ -121,9 +121,48 @@ class PaymentAttemptController extends Controller
     {
         //
     }
+   
+
+    public function confirmacion(Request $request){
+        Log::info('Lo que llega '.$request);
+        if(isset($request)){
+            $reference_sale = $request->reference_sale;
+            $reference_pol = $request->reference_pol;
+            $transaction_id = $request->transaction_id;
+            
+            $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
+            Log::info('reference '.$references);
+            if(!$references){
+                if($request->state_pol==4){
+                    $createtBill = $this->insertBill(1, $request->value, 'Aproveed', 1, $transaction_id); // Change user_id
+                    $this->insertPayment($createtBill->id , $request->value, 'Aproveed', $reference_sale, $reference_pol);
+                }else if($request->state_pol==6){
+                    $createtBill = $this->insertBill(1, $request->value, 'Declined', 0, $transaction_id); // Change User_id
+                    $this->insertPayment($createtBill->id, $request->value, 'Declined', $reference_sale, $reference_pol);
+                }
+            }else{
+                // Update
+                Log::info('Existe la referencia - update');
+                if($request->state_pol==4){
+                    $this->updateBill($references, 1);
+                }else if($request->state_pol==6){
+                    $this->updateBill($references, 0);
+                }
+            }
+           
+        }
+        return response()->json(null, 200);
+    }
+
+    public function updateBill($references, $paid)
+    {
+        $bill = Bill::find($references->bill_id);
+        $bill->transaction_id = $references->transaction_id;
+        $bill->paid = $paid;
+        $bill->save();
+    }
     public function insertBill($user_id, $value, $details, $paid, $transaction_id ): Bill
     {
-        
         return $bill = Bill::create([
             'user_id' => 1,
             'value' => 123,
@@ -133,36 +172,15 @@ class PaymentAttemptController extends Controller
         ]);
        
     }
-    public function insertPayment($bill_id, $value, $details, $paid, $reference_sale, $reference_pol )
+    public function insertPayment($bill_id, $value, $details, $reference_sale, $reference_pol )
     {
         $bill = PaymentAttempt::create([
             'bill_id' => $bill_id,
             'value' => 123,
             'details' => $details,
-            'paid'=> $paid,
             'reference_sale' => $reference_sale,
             'reference_pol' => $reference_pol,
         ]);
-
-    }
-
-    public function confirmacion(Request $request){
-        Log::info('Lo que llega '.$request);
-       // $this->insertBill(1, 123, 'Aproveed', 1, 1234);
-        // if(isset($request)){
-        //     $reference_sale = $request->reference_sale;
-        //     $reference_pol = $request->reference_pol;
-        //     $transaction_id = $request->transaction_id;
-            
-        //     $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
-        //     Log::info('reference '.$references);
-        //     if($references){
-        //         Log::info('Existe la referencia');
-        //     }else{
-        //         Log::info('No Existe la referencia');
-        //     }
-           
-        // }
 
     }
 }

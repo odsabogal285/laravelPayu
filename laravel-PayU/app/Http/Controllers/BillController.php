@@ -87,19 +87,12 @@ class BillController extends Controller
         //
     }
     public function respuesta(){
-        return view('/bill/respuesta');
+    Log::info('Respuesta ');
+       return view('/bill/respuesta');
     }
 
     public function confirmacion(Request $request){
-        Log::info('Con flecha '.$request->payment_method_type);
-        if(isset($request)){
-            if($request->state_pol==4){
-                $this->statePol(1, 123, 'Aproveed', 'true');
-            }else if($request->state_pol==6){
-                $this->statePol(1, 123, 'Declined', 'false');
-            }
-        }
-
+        Log::info($request->all());
     }
 
 
