@@ -52,8 +52,8 @@
             <input name="signature" type="hidden" value="{{$encrypMD5}}">
             <input name="test" type="hidden" value="0">
             <input name="buyerEmail" type="hidden" value="{{$bill->email}}">
-            <input name="responseUrl" type="hidden" value="http://20.25.36.217/respuesta">
-            <input name="confirmationUrl" type="hidden" value="http://20.25.36.217/confirmacion">
+            <input name="responseUrl" type="hidden" value="https://serene-beach-76968.herokuapp.com/respuesta">
+            <input name="confirmationUrl" type="hidden" value="https://serene-beach-76968.herokuapp.com/confirmacion">
             <input name="Submit" type="submit" value="Send">
         </form>
     </div>
