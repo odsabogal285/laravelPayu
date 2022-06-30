@@ -18,6 +18,7 @@ class BillController extends Controller
      */
     public function index(Request $request)
     {
+        Log::info('billing');
         return view('/bill/index')->with('bill', $request);
     }
 
