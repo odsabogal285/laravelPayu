@@ -13,6 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/confirmacion',
-
+        'https://serene-beach-76968.herokuapp.com/confirmacion',
     ];
 }
