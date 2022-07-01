@@ -44,7 +44,7 @@ class PaymentAttemptController extends Controller
             $reference_sale = $request->reference_sale;
             $reference_pol = $request->reference_pol;
             $transaction_id = $request->transaction_id;
-            
+
             $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
             Log::info('reference '.$references);
             //return response()->json(null, 200);
@@ -58,7 +58,7 @@ class PaymentAttemptController extends Controller
             //         //$this->insertPayment(1, 123, 'Aproveed', 1, $reference_sale, $reference_pol);
             //     }else if($request->state_pol==6){
             //         $createtBill = $this->insertBill(1, 123, 'Declined', 0, $transaction_id);
-    
+
             //         $this->insertPayment($createtBill->id, 123, 'Aproveed', 1, $reference_sale, $reference_pol);
             //     }
             // }else{
@@ -68,11 +68,11 @@ class PaymentAttemptController extends Controller
             //     //     //$this->insertPayment(1, 123, 'Aproveed', 1, $reference_sale, $reference_pol);
             //     // }else if($request->state_pol==6){
             //     //     $createtBill = $this->insertBill(1, 123, 'Declined', 0, $transaction_id);
-    
+
             //     //     $this->insertPayment($createtBill->id, 123, 'Aproveed', 1, $reference_sale, $reference_pol);
             //     // }
             // }
-          
+
         }
 
     }
@@ -121,7 +121,7 @@ class PaymentAttemptController extends Controller
     {
         //
     }
-   
+
 
     public function confirmacion(Request $request){
         Log::info('Lo que llega '.$request);
@@ -129,10 +129,10 @@ class PaymentAttemptController extends Controller
             $reference_sale = $request->reference_sale;
             $reference_pol = $request->reference_pol;
             $transaction_id = $request->transaction_id;
-            
+
             $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
             Log::info('reference '.$references);
-            if(!$references){
+            if(empty($references)){
                 if($request->state_pol==4){
                     $createtBill = $this->insertBill(1, $request->value, 'Aproveed', 1, $transaction_id); // Change user_id
                     $this->insertPayment($createtBill->id , $request->value, 'Aproveed', $reference_sale, $reference_pol);
@@ -149,7 +149,7 @@ class PaymentAttemptController extends Controller
                     $this->updateBill($references, 0);
                 }
             }
-           
+
         }
         return response()->json(null, 200);
     }
@@ -170,7 +170,7 @@ class PaymentAttemptController extends Controller
             'paid'=> $paid,
             'transaction_id' => $transaction_id,
         ]);
-       
+
     }
     public function insertPayment($bill_id, $value, $details, $reference_sale, $reference_pol )
     {
