@@ -34,22 +34,20 @@ class PaymentAttemptController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePaymentAttemptRequest  $request
+     * @param \App\Http\Requests\StorePaymentAttemptRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Log::info('Lo que llega '.$request);
-        if(isset($request)){
+        Log::info('Lo que llega ' . $request);
+        if (isset($request)) {
             $reference_sale = $request->reference_sale;
             $reference_pol = $request->reference_pol;
             $transaction_id = $request->transaction_id;
 
-            $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
-            Log::info('reference '.$references);
+            $references = PaymentAttempt::where('reference_pol', $reference_pol)->get();
+            Log::info('reference ' . $references);
             //return response()->json(null, 200);
-
-
 
 
             // if(!$references){
@@ -80,7 +78,7 @@ class PaymentAttemptController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PaymentAttempt  $paymentAttempt
+     * @param \App\Models\PaymentAttempt $paymentAttempt
      * @return \Illuminate\Http\Response
      */
     public function show(PaymentAttempt $paymentAttempt)
@@ -91,7 +89,7 @@ class PaymentAttemptController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PaymentAttempt  $paymentAttempt
+     * @param \App\Models\PaymentAttempt $paymentAttempt
      * @return \Illuminate\Http\Response
      */
     public function edit(PaymentAttempt $paymentAttempt)
@@ -102,8 +100,8 @@ class PaymentAttemptController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePaymentAttemptRequest  $request
-     * @param  \App\Models\PaymentAttempt  $paymentAttempt
+     * @param \App\Http\Requests\UpdatePaymentAttemptRequest $request
+     * @param \App\Models\PaymentAttempt $paymentAttempt
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePaymentAttemptRequest $request, PaymentAttempt $paymentAttempt)
@@ -114,7 +112,7 @@ class PaymentAttemptController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PaymentAttempt  $paymentAttempt
+     * @param \App\Models\PaymentAttempt $paymentAttempt
      * @return \Illuminate\Http\Response
      */
     public function destroy(PaymentAttempt $paymentAttempt)
@@ -123,40 +121,36 @@ class PaymentAttemptController extends Controller
     }
 
 
-    public function confirmacion(Request $request){
-        Log::info('Lo que llega '.$request);
-        if(isset($request)){
+    public function confirmacion(Request $request)
+    {
+        Log::info('Lo que llega ' . $request);
+        if (isset($request)) {
             $reference_sale = $request->reference_sale;
             $reference_pol = $request->reference_pol;
             $transaction_id = $request->transaction_id;
 
-            $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
-            Log::info('reference '.$references);
-            if(sizeof($references) === 0){
-                Log::info('Es nulo');
-                /*
-                if($request->state_pol==4){
+            $references = PaymentAttempt::where('reference_pol', $reference_pol)->get();
+            Log::info('reference ' . $references);
+            if (sizeof($references) === 0) {
+
+
+                if ($request->state_pol == 4) {
                     $createtBill = $this->insertBill(1, $request->value, 'Aproveed', 1, $transaction_id); // Change user_id
-                    $this->insertPayment($createtBill->id , $request->value, 'Aproveed', $reference_sale, $reference_pol);
-                }else if($request->state_pol==6){
+                    $this->insertPayment($createtBill->id, $request->value, 'Aproveed', $reference_sale, $reference_pol);
+                } else if ($request->state_pol == 6) {
                     $createtBill = $this->insertBill(1, $request->value, 'Declined', 0, $transaction_id); // Change User_id
                     $this->insertPayment($createtBill->id, $request->value, 'Declined', $reference_sale, $reference_pol);
                 }
-                */
-            }else {
 
-            }
+            } else {
                 // Update
-                /*
                 Log::info('Existe la referencia - update');
-                if($request->state_pol==4){
+                if ($request->state_pol == 4) {
                     $this->updateBill($references, 1);
-                }else if($request->state_pol==6){
+                } else if ($request->state_pol == 6) {
                     $this->updateBill($references, 0);
                 }
             }
-                */
-
         }
         return response()->json(null, 200);
     }
@@ -168,18 +162,20 @@ class PaymentAttemptController extends Controller
         $bill->paid = $paid;
         $bill->save();
     }
-    public function insertBill($user_id, $value, $details, $paid, $transaction_id ): Bill
+
+    public function insertBill($user_id, $value, $details, $paid, $transaction_id): Bill
     {
         return $bill = Bill::create([
             'user_id' => 1,
             'value' => 123,
             'details' => $details,
-            'paid'=> $paid,
+            'paid' => $paid,
             'transaction_id' => $transaction_id,
         ]);
 
     }
-    public function insertPayment($bill_id, $value, $details, $reference_sale, $reference_pol )
+
+    public function insertPayment($bill_id, $value, $details, $reference_sale, $reference_pol)
     {
         $bill = PaymentAttempt::create([
             'bill_id' => $bill_id,
