@@ -132,7 +132,9 @@ class PaymentAttemptController extends Controller
 
             $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
             Log::info('reference '.$references);
-            if(empty($references)){
+            if(empty($references) || sizeof($references) === 0 || !$references){
+                Log::info('Es nulo');
+                /*
                 if($request->state_pol==4){
                     $createtBill = $this->insertBill(1, $request->value, 'Aproveed', 1, $transaction_id); // Change user_id
                     $this->insertPayment($createtBill->id , $request->value, 'Aproveed', $reference_sale, $reference_pol);
@@ -140,8 +142,12 @@ class PaymentAttemptController extends Controller
                     $createtBill = $this->insertBill(1, $request->value, 'Declined', 0, $transaction_id); // Change User_id
                     $this->insertPayment($createtBill->id, $request->value, 'Declined', $reference_sale, $reference_pol);
                 }
+                */
             }else{
+                Log::info('Esta malxd');
+            }
                 // Update
+                /*
                 Log::info('Existe la referencia - update');
                 if($request->state_pol==4){
                     $this->updateBill($references, 1);
@@ -149,6 +155,7 @@ class PaymentAttemptController extends Controller
                     $this->updateBill($references, 0);
                 }
             }
+                */
 
         }
         return response()->json(null, 200);
