@@ -132,7 +132,7 @@ class PaymentAttemptController extends Controller
 
             $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
             Log::info('reference '.$references);
-            if(empty($references) || sizeof($references) === 0 || !$references){
+            if(empty($references)){
                 Log::info('Es nulo');
                 /*
                 if($request->state_pol==4){
