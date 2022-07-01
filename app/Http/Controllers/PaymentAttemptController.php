@@ -132,7 +132,7 @@ class PaymentAttemptController extends Controller
 
             $references = PaymentAttempt::where('reference_pol',  $reference_pol)->get();
             Log::info('reference '.$references);
-            if(sizeof($references) === 0 ){
+            if(sizeof($references) === 0){
                 Log::info('Es nulo');
                 /*
                 if($request->state_pol==4){
@@ -143,7 +143,9 @@ class PaymentAttemptController extends Controller
                     $this->insertPayment($createtBill->id, $request->value, 'Declined', $reference_sale, $reference_pol);
                 }
                 */
-            }else{
+            }else {
+
+            }
                 // Update
                 /*
                 Log::info('Existe la referencia - update');
