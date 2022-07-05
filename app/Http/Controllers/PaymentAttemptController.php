@@ -144,6 +144,7 @@ class PaymentAttemptController extends Controller
 
             } else {
                 // Update
+                Log::info($references);
                 Log::info('Existe la referencia - update');
                 if ($request->state_pol == 4) {
                     $this->updateBill($references, 1);
