@@ -167,7 +167,7 @@ class PaymentAttemptController extends Controller
     {
         return $bill = Bill::create([
             'user_id' => 1,
-            'value' => 123,
+            'value' => $value,
             'details' => $details,
             'paid' => $paid,
             'transaction_id' => $transaction_id,
