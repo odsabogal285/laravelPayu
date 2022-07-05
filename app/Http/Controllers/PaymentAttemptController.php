@@ -134,10 +134,10 @@ class PaymentAttemptController extends Controller
             if (sizeof($references) === 0) {
 
 
-                if ($request->state_pol == 4) {
+                if ($request->state_pol == 4) { // Aproved
                     $createtBill = $this->insertBill(1, $request->value, 'Aproveed', 1, $transaction_id); // Change user_id
                     $this->insertPayment($createtBill->id, $request->value, 'Aproveed', $reference_sale, $reference_pol);
-                } else if ($request->state_pol == 6) {
+                } else if ($request->state_pol == 6) { // Declined
                     $createtBill = $this->insertBill(1, $request->value, 'Declined', 0, $transaction_id); // Change User_id
                     $this->insertPayment($createtBill->id, $request->value, 'Declined', $reference_sale, $reference_pol);
                 }
