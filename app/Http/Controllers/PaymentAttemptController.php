@@ -143,8 +143,7 @@ class PaymentAttemptController extends Controller
                 }
 
             } else {
-                // Update
-                Log::info($references[0]->bill_id);
+                // Updated
                 if ($request->state_pol == 4) {
                     $this->updateBill($references, 1);
                 } else if ($request->state_pol == 6) {
