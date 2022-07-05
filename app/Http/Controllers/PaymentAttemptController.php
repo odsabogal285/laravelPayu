@@ -149,6 +149,7 @@ class PaymentAttemptController extends Controller
                     $this->updateBill($references, 1);
                 } else if ($request->state_pol == 6) {
                    $this->updateBill($references, 0);
+                   Log::info($references[0]->bill_id);
                    $this->insertPayment($references[0]->bill_id, $request->value, 'Declined', $reference_sale, $reference_pol);
                 }
             }
