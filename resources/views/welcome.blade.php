@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container py-5 text-center">
+        <a href="{{route('login')}}">login</a>
+        <a href="{{route('register')}}">register</a>
         <form action="{{route('billing')}}" method="post">
             @csrf
             <div class="mb-3">
