@@ -20,6 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'document_id' => $this->faker->unique()->randomNumber(6),
+            'password'=> $this->faker->password(6, 10),
             'surname' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),

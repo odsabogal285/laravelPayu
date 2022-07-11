@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Route::get(/users, )
 Route::post('/billing', [BillController::class, 'index'])->name('billing');
 Route::get('/respuesta', [BillController::class, 'respuesta'])->name('respuesta');
 //Route::post('/confirmacion', [BillController::class, 'confirmacion'])->name('confirmacion');
